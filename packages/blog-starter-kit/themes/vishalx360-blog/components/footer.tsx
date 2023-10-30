@@ -1,5 +1,5 @@
 // import { useAppContext } from './contexts/appContext';
-import AVATARIMAGE from "@/../public/images/vishal.png";
+import AVATARIMAGE from "../public/images/vishal.png";
 
 import Image from "next/image";
 import Link from "next/link";

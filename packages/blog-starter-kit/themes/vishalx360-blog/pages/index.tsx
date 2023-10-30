@@ -9,7 +9,6 @@ import { Waypoint } from 'react-waypoint';
 import { Container } from '../components/container';
 import { AppProvider } from '../components/contexts/appContext';
 import { Layout } from '../components/layout';
-import AVATARIMAGE from "@/../public/images/vishal.png";
 
 import PostItem from '../components/PostItem';
 import StaggerParent from '../components/StaggerParent';

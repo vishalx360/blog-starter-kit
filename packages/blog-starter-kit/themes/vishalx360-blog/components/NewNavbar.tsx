@@ -1,5 +1,5 @@
-import LOGOIMAGE from "@/../public/images/icons/icon-72.png";
-import AVATARIMAGE from "@/../public/images/vishal.png";
+import LOGOIMAGE from "../public/images/icons/icon-72.png";
+import AVATARIMAGE from "../public/images/vishal.png";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
