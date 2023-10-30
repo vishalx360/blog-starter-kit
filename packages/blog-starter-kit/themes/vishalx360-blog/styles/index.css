@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--brand: 0 35 29;
+		--accent: 0 168 138;
+		--brand-light: 12 35 32;
+		--brand-dark: 5 29 25;
+	}
+}
+html,
+body {
+	background-color: #051d19;
+	color: white;
+	scroll-behavior: smooth;
+}
+
+.hashnode-content-style {
+	@apply prose break-words text-slate-950 dark:prose-invert lg:prose-xl first:prose-h1:mt-0 first:prose-h2:mt-0 first:prose-h3:mt-0 first:prose-h4:mt-0 first:prose-h5:mt-0 prose-p:leading-snug first:prose-p:mt-0 prose-a:leading-snug prose-a:underline hover:prose-a:bg-primary-50 prose-blockquote:leading-snug prose-figure:leading-snug prose-figcaption:leading-snug prose-pre:leading-snug prose-ol:leading-snug prose-ul:leading-snug prose-li:leading-snug prose-th:leading-snug prose-td:leading-snug prose-img:max-w-full dark:text-neutral-50 dark:hover:prose-a:bg-neutral-800 dark:hover:prose-a:text-primary-500 dark:prose-pre:bg-neutral-900;
+}
+
+/* custom */
+
+.bg_circle {
+	z-index: 0;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.17) 0%, rgba(0, 35, 29, 0.17) 100%);
+	transform: rotate(-45deg);
+	position: absolute;
+	width: 500px;
+	height: 500px;
+	border-radius: 50%;
+	top: -20%;
+	left: 0%;
+	transition: all 0.5s;
+	animation: pulse 10s infinite ease-in-out;
+	@media (max-width: $sm) {
+		top: -30%;
+	}
+}
+
+@keyframes pulse {
+	0% {
+		transform: translateY(20px);
+	}
+	20% {
+		transform: translateY(-20px);
+	}
+	40% {
+		transform: translateY(15px);
+	}
+	60% {
+		transform: translateY(-20px);
+	}
+	100% {
+		transform: translateY(20px);
+	}
+}
+
+/* dot matrix */
+.dot_matrix_graphic {
+	position: absolute;
+	z-index: 0;
+	transition: all 0.5s;
+	/* opacity: 0.4; */
+	animation: pulse 50s 100ms infinite ease-in-out backwards;
+}
+
+.pulse {
+	animation: pulse 100s 200ms infinite ease-in-out backwards;
+}
+
+#hero_dot_matrix_graphic {
+	top: -10%;
+	left: 70%;
+	transition: all 0.5s;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+	width: 10px;
+	border-radius: 5px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+	background: #f1f1f11f;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+	background: #00a88a;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+	background: #01b190;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
