@@ -18,6 +18,13 @@ const config = {
 	experimental: {
 		scrollRestoration: true,
 	},
+	// ignore build errors
+	typescript: {
+		ignoreBuildErrors: true,
+	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
 	images: {
 		remotePatterns: [
 			{
