@@ -146,7 +146,7 @@ function DesktopLinks({ activeSection }: { activeSection: string }) {
             >
               {item.title}
             </a>
-            {isActive && <motion.div layoutId="nav-indicator" className="w-full h-0.5 bg-white/60 rounded-full" />}
+            {isActive && <div className="w-full h-0.5 bg-white/60 rounded-full" />}
           </div>
         );
       })}
