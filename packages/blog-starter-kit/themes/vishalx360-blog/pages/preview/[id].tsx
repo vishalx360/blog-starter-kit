@@ -1,15 +1,13 @@
 import { resizeImage } from '@starter-kit/utils/image';
+import { motion } from "framer-motion";
 import request from 'graphql-request';
 import ErrorPage from 'next/error';
-import Head from 'next/head';
 import Link from 'next/link';
-import { Container } from '../../components/container';
 import { AppProvider } from '../../components/contexts/appContext';
 import { CoverImage } from '../../components/cover-image';
-import { Footer } from '../../components/footer';
+import { DateFormatter } from '../../components/date-formatter';
 import { Layout } from '../../components/layout';
 import { MarkdownToHtml } from '../../components/markdown-to-html';
-import { PersonalHeader } from '../../components/personal-theme-header';
 import {
 	DraftByIdDocument,
 	DraftByIdQuery,
@@ -35,10 +33,10 @@ export default function Post({ publication, post }: Props) {
 
 	const coverImageSrc = !!post.coverImage?.url
 		? resizeImage(post.coverImage.url, {
-				w: 1600,
-				h: 840,
-				c: 'thumb',
-		  })
+			w: 1600,
+			h: 840,
+			c: 'thumb',
+		})
 		: undefined;
 
 	const tagsList = post.tags?.map((tag) => (
@@ -55,30 +53,26 @@ export default function Post({ publication, post }: Props) {
 	return (
 		<AppProvider publication={publication} post={post}>
 			<Layout>
-				<Container className="mx-auto flex max-w-2xl flex-col items-stretch gap-10 px-5 py-10">
-					<PersonalHeader />
-					<article className="flex flex-col items-start gap-10 pb-10">
-						<Head>
-							<title>{post.seo?.title || post.title}</title>
-							<style dangerouslySetInnerHTML={{ __html: highlightJsMonokaiTheme }}></style>
-						</Head>
-						<h1 className="text-4xl leading-tight tracking-tight text-black dark:text-white">
-							{post.title}
-						</h1>
-						{!!coverImageSrc && (
-							<div className="w-full">
-								<CoverImage title={post.title} priority={true} src={coverImageSrc} />
-							</div>
-						)}
-						<MarkdownToHtml contentMarkdown={post.content.markdown} />
-						{(post.tags ?? []).length > 0 && (
-							<div className="mx-auto w-full text-slate-600 dark:text-neutral-300 md:max-w-screen-md">
-								<ul className="flex flex-row flex-wrap items-center gap-2">{tagsList}</ul>
-							</div>
-						)}
-					</article>
-					<Footer />
-				</Container>
+				<h1 className="text-4xl leading-tight tracking-tight text-black dark:text-white">
+					{post.title}
+				</h1>
+				<div className="flex items-center gap-5 text-neutral-600 dark:text-neutral-400">
+					<DateFormatter dateString={post.publishedAt} />
+					<p className="">
+						{post?.comments?.totalDocuments} Comments
+					</p>
+				</div>
+				{!!coverImageSrc && (
+					<motion.div layoutId={`cover:${post.id}`} className="z-30 w-full">
+						<CoverImage title={post.title} priority={true} src={coverImageSrc} />
+					</motion.div>
+				)}
+				<MarkdownToHtml contentMarkdown={post.content.markdown} />
+				{(post.tags ?? []).length > 0 && (
+					<div className="mx-auto w-full text-slate-600 dark:text-neutral-300 md:max-w-screen-md">
+						<ul className="flex flex-row flex-wrap items-center gap-2">{tagsList}</ul>
+					</div>
+				)}
 			</Layout>
 		</AppProvider>
 	);
