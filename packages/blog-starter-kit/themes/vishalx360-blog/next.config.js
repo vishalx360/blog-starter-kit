@@ -1,6 +1,7 @@
 const ANALYTICS_BASE_URL = 'https://hn-ping2.hashnode.com';
 const ADVANCED_ANALYTICS_BASE_URL = 'https://stats.hashnode.com';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+const PORTFOLIO_URL = process.env.NEXT_PUBLIC_PORTFOLIO_URL;
 
 const getBasePath = () => {
 	if (BASE_URL && BASE_URL.indexOf('/') !== -1) {
@@ -53,12 +54,12 @@ const config = {
 		return [
 			{
 				source: '/',
-				destination: '/blog', // Matched parameters can be used in the destination
+				destination: `${PORTFOLIO_URL}/blog`, // Matched parameters can be used in the destination
 				permanent: true,
 			},
 			{
 				source: '/:slug*',
-				destination: '/blog/:slug*', // Matched parameters can be used in the destination
+				destination: `${PORTFOLIO_URL}/blog/:slug*`, // Matched parameters can be used in the destination
 				permanent: true,
 			},
 		];
