@@ -18,6 +18,7 @@ import {
 	PublicationByHostQuery,
 	PublicationByHostQueryVariables,
 } from '../../generated/graphql';
+import { Container } from '../../components/container';
 
 type Props = {
 	post: Post;
@@ -52,28 +53,30 @@ export default function Post({ publication, post }: Props) {
 
 	return (
 		<AppProvider publication={publication} post={post}>
-			<Layout>
-				<h1 className="text-4xl leading-tight tracking-tight text-black dark:text-white">
-					{post.title}
-				</h1>
-				<div className="flex items-center gap-5 text-neutral-600 dark:text-neutral-400">
-					<DateFormatter dateString={post.publishedAt} />
-					<p className="">
-						{post?.comments?.totalDocuments} Comments
-					</p>
-				</div>
-				{!!coverImageSrc && (
-					<motion.div layoutId={`cover:${post.id}`} className="z-30 w-full">
-						<CoverImage title={post.title} priority={true} src={coverImageSrc} />
-					</motion.div>
-				)}
-				<MarkdownToHtml contentMarkdown={post.content.markdown} />
-				{(post.tags ?? []).length > 0 && (
-					<div className="mx-auto w-full text-slate-600 dark:text-neutral-300 md:max-w-screen-md">
-						<ul className="flex flex-row flex-wrap items-center gap-2">{tagsList}</ul>
+			<Container className="mx-auto py-24 sm:py-32 flex max-w-4xl flex-col items-stretch gap-10 px-5">
+				<Layout>
+					<h1 className="text-4xl leading-tight tracking-tight text-black dark:text-white">
+						{post.title}
+					</h1>
+					<div className="flex items-center gap-5 text-neutral-600 dark:text-neutral-400">
+						<DateFormatter dateString={post.publishedAt} />
+						<p className="">
+							{post?.comments?.totalDocuments} Comments
+						</p>
 					</div>
-				)}
-			</Layout>
+					{!!coverImageSrc && (
+						<motion.div layoutId={`cover:${post.id}`} className="z-30 w-full">
+							<CoverImage title={post.title} priority={true} src={coverImageSrc} />
+						</motion.div>
+					)}
+					<MarkdownToHtml contentMarkdown={post.content.markdown} />
+					{(post.tags ?? []).length > 0 && (
+						<div className="mx-auto w-full text-slate-600 dark:text-neutral-300 md:max-w-screen-md">
+							<ul className="flex flex-row flex-wrap items-center gap-2">{tagsList}</ul>
+						</div>
+					)}
+				</Layout>
+			</Container>
 		</AppProvider>
 	);
 }
