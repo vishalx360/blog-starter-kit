@@ -53,7 +53,7 @@ export default function Tag({ publication, posts, tag }: Props) {
 							<p className="mt-2 text-lg leading-8 text-gray-300">
 								Learn about design and development.
 							</p> */}
-							<BackButton text='All Blogs' />
+							<BackButton text='All Blogs' link="/" />
 
 							<div className="flex flex-col gap-1 pt-5">
 								<p className="font-bold uppercase text-slate-500 dark:text-neutral-400">Tag</p>
