@@ -49,6 +49,20 @@ const config = {
 			},
 		];
 	},
+	async redirects() {
+		return [
+			{
+				source: '/',
+				destination: '/blog', // Matched parameters can be used in the destination
+				permanent: true,
+			},
+			{
+				source: '/:slug*',
+				destination: '/blog/:slug*', // Matched parameters can be used in the destination
+				permanent: true,
+			},
+		];
+	},
 };
 
 module.exports = config;
