@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 
 
-export default function BackButton({ forwardIcon = false, text, link }: { forwardIcon: boolean; text?: string; link?: string }) {
+export default function BackButton({ forwardIcon = false, text, link }: { forwardIcon?: boolean; text?: string; link?: string }) {
   const router = useRouter();
 
   const handleBack = () => {

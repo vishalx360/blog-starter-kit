@@ -17,6 +17,7 @@ import {
 	TagPostsByPublicationQueryVariables,
 } from '../../generated/graphql';
 import StaggerParent from '../../components/StaggerParent';
+import BackButton from '../../components/BackButton';
 
 type Props = {
 	posts: PostFragment[];
@@ -45,36 +46,29 @@ export default function Tag({ publication, posts, tag }: Props) {
 						dangerouslySetInnerHTML={{ __html: JSON.stringify(addPublicationJsonLd(publication)) }}
 					/>
 				</Head>
-				<Container className="mx-auto flex max-w-5xl flex-col items-stretch gap-10 px-5 py-10">
-					{/* <PersonalHeader /> */}
-					<div className="flex flex-col gap-1 pt-5">
-						<p className="font-bold uppercase text-slate-500 dark:text-neutral-400">Tag</p>
-						<h1 className="text-4xl font-bold text-slate-900 dark:text-neutral-50">#{tag}</h1>
+				<Container className="pt-24 sm:pt-32 md:pb-16">
+					<div className="mx-auto max-w-5xl px-6 lg:px-8">
+						<div className="mx-auto max-w-2xl lg:mx-0">
+							{/* <h2 className="text-3xl font-bold tracking-tight text-gray-100 sm:text-4xl">Blog</h2>
+							<p className="mt-2 text-lg leading-8 text-gray-300">
+								Learn about design and development.
+							</p> */}
+							<BackButton text='All Blogs' />
+
+							<div className="flex flex-col gap-1 pt-5">
+								<p className="font-bold uppercase text-slate-500 dark:text-neutral-400">Tag</p>
+								<h1 className="text-4xl font-bold text-slate-900 dark:text-neutral-50">#{tag}</h1>
+							</div>
+						</div>
+						<StaggerParent className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+							{posts.map((post) => (
+								<PostItem key={post.id} post={post} />
+							))}
+						</StaggerParent>
 					</div>
-					<div className=" text-slate-600 dark:text-neutral-300 md:max-w-screen-md">
-						<ul className="flex flex-row flex-wrap items-center gap-2">
-							<li key={tag}>
-								<Link
-									href={`/tag/${tag}`}
-									className="block rounded-full border px-2 py-1 font-medium hover:bg-slate-50 dark:border-neutral-800 dark:hover:bg-neutral-800 md:px-4"
-								>
-									#{tag}
-								</Link>
-							</li>
-							<Link
-								href={`/`}
-								className="block rounded-full border px-2 py-1 font-medium hover:bg-slate-50 dark:border-neutral-800 dark:hover:bg-neutral-800 md:px-4"
-							>
-								Clear
-							</Link>
-						</ul>
-					</div>
-					{posts.length > 0 && <StaggerParent className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-						{posts.map((post) => (
-							<PostItem key={post.id} post={post} />
-						))}
-					</StaggerParent>}
 				</Container>
+
+
 
 				{/* <Container className="py-24 sm:py-32">
 					<div className="mx-auto max-w-7xl px-6 lg:px-8">

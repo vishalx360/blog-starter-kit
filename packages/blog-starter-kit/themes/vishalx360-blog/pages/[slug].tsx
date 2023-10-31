@@ -103,8 +103,11 @@ const Post = (publication: PublicationFragment, post: PostFullFragment) => {
 			<h1 className="text-4xl leading-tight tracking-tight text-black dark:text-white">
 				{post.title}
 			</h1>
-			<div className="text-neutral-600 dark:text-neutral-400">
+			<div className="flex items-center gap-5 text-neutral-600 dark:text-neutral-400">
 				<DateFormatter dateString={post.publishedAt} />
+				<p className="">
+					{post?.comments?.totalDocuments} Comments
+				</p>
 			</div>
 			{!!coverImageSrc && (
 				<motion.div layoutId={`cover:${post.id}`} className="z-30 w-full">
